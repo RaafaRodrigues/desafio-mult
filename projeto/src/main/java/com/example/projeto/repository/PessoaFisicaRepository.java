@@ -10,8 +10,8 @@ import java.util.List;
 public interface PessoaFisicaRepository extends JpaRepository<PessoaFisica,Integer> {
 
 
-   // public List<PessoaFisica> findAllOrderById();
+
     @Query(value = "select * from pessoa_fisica  as p order by p.id_p_fisica" ,nativeQuery = true )
-    public List<PessoaFisica> findAllOrderById();
+    List<PessoaFisica> findAllOrderById();
 
 }

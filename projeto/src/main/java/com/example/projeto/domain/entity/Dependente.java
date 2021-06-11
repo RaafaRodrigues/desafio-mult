@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "dependentes")
+@Table(name = "dependente")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -24,7 +24,6 @@ public class Dependente {
     @Column(name = "cpf" ,length = 11)
     private String cpf;
 
-   // @Column(name = "fk_p_fisica")
     @ManyToOne
     @JoinColumn(name= "fk_p_fisica")
     private PessoaFisica fkPessoaFisica;

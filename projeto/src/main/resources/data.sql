@@ -14,7 +14,7 @@ primary key(id_p_fisica),
  constraint fk_estado_civil foreign key(fk_estado_civil) references estado_civil(id_e_civil)
 );
 
-create table dependentes
+create table dependente
 (
 id_dependente serial primary key,
 nome varchar(80) not null,

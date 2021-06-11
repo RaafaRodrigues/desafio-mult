@@ -1,9 +1,9 @@
 package com.example.projeto.domain.entity;
 
-import jdk.jfr.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -27,7 +27,7 @@ public class PessoaFisica {
     private LocalDate dataNasc;
 
     @OneToOne
-    @JoinColumn(name = "fk_estado_civil")
+    @JoinColumn(name = "fk_estado_civil" )
     private EstadoCivil estadoCivil;
 
     public PessoaFisica(String nome, LocalDate dataNasc, EstadoCivil estadoCivil) {

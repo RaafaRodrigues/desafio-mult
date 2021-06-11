@@ -7,9 +7,7 @@ import com.example.projeto.domain.entity.PessoaFisica;
 import com.example.projeto.repository.PessoaFisicaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -24,18 +22,19 @@ public class PessoaFisicaService {
             List<PessoaFisica> pessoas = pessoaFisicaRepository.findAllOrderById();
             List<PessoaFisicaDTO> pessoaFisicaDTOS = new ArrayList<>();
             pessoas.stream().map(pessoa ->
-                    pessoaFisicaDTOS.add(new MetodosUteis().transformarDTO(pessoa))
+                    pessoaFisicaDTOS.add(new MetodosUteis().transformarDTOPessoaFisica(pessoa))
 
             ).collect(Collectors.toList());
 
         return pessoaFisicaDTOS;
     }
 
+
     public PessoaFisicaDTO listarPorId(Integer id){
         try {
             if(pessoaFisicaRepository.existsById(id)) {
                 PessoaFisica entidade = pessoaFisicaRepository.findById(id).get();
-                PessoaFisicaDTO pessoa = new MetodosUteis().transformarDTO(entidade);
+                PessoaFisicaDTO pessoa = new MetodosUteis().transformarDTOPessoaFisica(entidade);
                 return pessoa;
             }else{
                 throw new Exception();
@@ -52,7 +51,7 @@ public class PessoaFisicaService {
 
     public Boolean cadastrar(PessoaFisicaDTO  pessoaFisicaDTO){
             try {
-                pessoaFisicaRepository.save(new MetodosUteis().transformarEntity(pessoaFisicaDTO));
+                pessoaFisicaRepository.save(new MetodosUteis().transformarEntityPessoaFisica(pessoaFisicaDTO));
                 return true;
             }catch (NullPointerException e){
                 return false;
